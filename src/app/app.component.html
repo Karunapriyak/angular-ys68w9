@@ -1,0 +1,20 @@
+<h1>Team</h1>
+<ng-container [ngTemplateOutlet]="listTemplate" [ngTemplateOutletContext]="{ list: teams }">
+</ng-container>
+
+<h1>Favorite Tean</h1>
+<ng-container [ngTemplateOutlet]="listTemplate" [ngTemplateOutletContext]="{ list: bestTeam }">
+</ng-container>
+
+<ng-template #listTemplate let-list="list">
+  <div *ngFor="let item of list">
+	  <ng-container [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{ $implicit: item }">
+		</ng-container>
+	</div>
+</ng-template>
+
+<ng-template #itemTemplate let-item>
+  <span>{{ item.name }}</span>
+	<p>{{ item.description }}</p>
+	<button (click)="onClick(item)">Click Me</button>
+</ng-template>
